@@ -3,7 +3,6 @@ import {
   AccordionItemContent,
   AccordionItemTrigger,
   AccordionRoot,
-  Heading,
   Icon,
   SimpleGrid,
   Stack,
@@ -26,11 +25,10 @@ const OpeningSelector = () => {
 
   return (
     <Stack width="full" paddingLeft={10}>
-      <Heading>Openings</Heading>
       <AccordionRoot>
         {items.map((item) => (
           <AccordionItem
-            paddingBottom={10}
+            padding={10}
             key={item.value}
             value={item.value.toString()}
           >

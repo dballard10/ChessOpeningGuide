@@ -1,6 +1,6 @@
-import { Grid, GridItem, Show, useBreakpointValue } from "@chakra-ui/react";
+import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 import OpeningSelector from "./components/OpeningSelector";
-import Chessboard from "./components/Chessboard";
+import ChessGame from "./components/ChessGame";
 import NavBar from "./components/NavBar";
 
 function App() {
@@ -23,13 +23,11 @@ function App() {
       <GridItem area="nav">
         <NavBar />
       </GridItem>
-      <Show when="lg">
-        <GridItem area="aside">
-          <OpeningSelector />
-        </GridItem>
-      </Show>
+      <GridItem area="aside">
+        <OpeningSelector />
+      </GridItem>
       <GridItem area="main">
-        <Chessboard />
+        <ChessGame />
       </GridItem>
     </Grid>
   );
