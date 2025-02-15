@@ -2,8 +2,11 @@ import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 import OpeningSelector from "./components/OpeningSelector";
 import ChessGame from "./components/ChessGame";
 import NavBar from "./components/NavBar";
+import { useState } from "react";
 
 function App() {
+  const [selectedOpening, setSelectedOpening] = useState("");
+
   const templateAreas = useBreakpointValue({
     base: `"nav" " main"`,
     lg: `"nav nav" "aside main"`,
@@ -11,7 +14,7 @@ function App() {
 
   const templateColumns = useBreakpointValue({
     base: "1fr",
-    lg: "200px 1fr",
+    lg: "300px 1fr",
   });
 
   return (
@@ -24,10 +27,10 @@ function App() {
         <NavBar />
       </GridItem>
       <GridItem area="aside">
-        <OpeningSelector />
+        <OpeningSelector setSelectedOpening={setSelectedOpening} />
       </GridItem>
       <GridItem area="main">
-        <ChessGame />
+        <ChessGame selectedOpening={selectedOpening} />
       </GridItem>
     </Grid>
   );

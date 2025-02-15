@@ -3,13 +3,17 @@ import {
   AccordionItemContent,
   AccordionItemTrigger,
   AccordionRoot,
-  Icon,
-  SimpleGrid,
-  Stack,
-} from "@chakra-ui/react";
+} from "@/components/ui/accordion";
+import { Button, Icon, SimpleGrid, Stack } from "@chakra-ui/react";
 import openings from "../data/openings";
 import { FaChess } from "react-icons/fa";
-const OpeningSelector = () => {
+import { FC } from "react";
+
+interface OpeningSelectorProps {
+  setSelectedOpening: (opening: string) => void;
+}
+
+const OpeningSelector: FC<OpeningSelectorProps> = ({ setSelectedOpening }) => {
   const items = [
     {
       value: 1,
@@ -39,9 +43,14 @@ const OpeningSelector = () => {
               {" " + item.title}
             </AccordionItemTrigger>
             <AccordionItemContent paddingLeft={10}>
-              <SimpleGrid columns={1} gap={7}>
+              <SimpleGrid columns={1} gap={7} padding={10}>
                 {openings.map((opening) => (
-                  <div key={opening}>{opening}</div>
+                  <Button
+                    key={opening}
+                    onClick={() => setSelectedOpening(opening)}
+                  >
+                    {opening}
+                  </Button>
                 ))}
               </SimpleGrid>
             </AccordionItemContent>

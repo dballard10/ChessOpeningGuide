@@ -3,7 +3,11 @@ import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
 import { Heading, SimpleGrid } from "@chakra-ui/react";
 
-const ChessGame: React.FC = () => {
+interface ChessGameProps {
+  selectedOpening: string;
+}
+
+const ChessGame: React.FC<ChessGameProps> = ({ selectedOpening }) => {
   // Initialize the chess game
   const [game, setGame] = useState(new Chess());
 
@@ -26,7 +30,7 @@ const ChessGame: React.FC = () => {
 
   return (
     <SimpleGrid columns={1} padding={10}>
-      <Heading>Opening</Heading>
+      <Heading>{selectedOpening}</Heading>
       <Chessboard position={game.fen()} onPieceDrop={onDrop} boardWidth={500} />
     </SimpleGrid>
   );
