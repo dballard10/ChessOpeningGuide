@@ -20,15 +20,15 @@ function App() {
       templateColumns={templateColumns}
       gap={4}
     >
-      <GridItem area="nav" color="blue">
+      <GridItem area="nav">
         <NavBar />
       </GridItem>
       <Show when="lg">
-        <GridItem area="aside" color="green">
+        <GridItem area="aside">
           <OpeningSelector />
         </GridItem>
       </Show>
-      <GridItem area="main" color="red">
+      <GridItem area="main">
         <Chessboard />
       </GridItem>
     </Grid>

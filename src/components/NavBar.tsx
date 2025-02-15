@@ -1,16 +1,15 @@
-import { HStack, Image, Heading, SimpleGrid } from "@chakra-ui/react";
+import { HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/chesslogo.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
 
 const NavBar = () => {
   return (
-    <SimpleGrid columns={2} padding="10px" justifyContent="space-between">
+    <HStack justifyContent={"space-between"} padding="10px">
       <HStack>
         <Image src={logo} width="60px" height="60px" />
-        <Heading> Chess Opening Explorer</Heading>
       </HStack>
       <ColorModeSwitch />
-    </SimpleGrid>
+    </HStack>
   );
 };
 
