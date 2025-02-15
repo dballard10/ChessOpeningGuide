@@ -5,25 +5,29 @@ import {
   AccordionRoot,
 } from "@/components/ui/accordion";
 import { Button, Icon, SimpleGrid, Stack } from "@chakra-ui/react";
-import openings from "../data/openings";
-import { FaChess } from "react-icons/fa";
+import { openings, defenses } from "../data/openings";
+import { FaChessKnight, FaChessRook } from "react-icons/fa";
 import { FC } from "react";
 
 interface OpeningSelectorProps {
   setSelectedOpening: (opening: string) => void;
+  setFocusSide: (side: "white" | "black") => void;
 }
 
-const OpeningSelector: FC<OpeningSelectorProps> = ({ setSelectedOpening }) => {
+const OpeningSelector: FC<OpeningSelectorProps> = ({
+  setSelectedOpening,
+  setFocusSide,
+}) => {
   const items = [
     {
       value: 1,
       title: "Openings",
-      icon: <Icon as={FaChess} />,
+      icon: <Icon as={FaChessKnight} />,
     },
     {
       value: 2,
       title: "Defenses",
-      icon: <Icon as={FaChess} />,
+      icon: <Icon as={FaChessRook} />,
     },
   ];
 
@@ -37,21 +41,34 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({ setSelectedOpening }) => {
             value={item.value.toString()}
           >
             <AccordionItemTrigger>
-              <Icon fontSize="lg" color="fg.subtle">
-                {item.icon}
-              </Icon>
+              <Icon>{item.icon}</Icon>
               {" " + item.title}
             </AccordionItemTrigger>
             <AccordionItemContent paddingLeft={10}>
               <SimpleGrid columns={1} gap={7} padding={10}>
-                {openings.map((opening) => (
-                  <Button
-                    key={opening}
-                    onClick={() => setSelectedOpening(opening)}
-                  >
-                    {opening}
-                  </Button>
-                ))}
+                {item.value === 1
+                  ? openings.map((opening) => (
+                      <Button
+                        key={opening}
+                        onClick={() => {
+                          setSelectedOpening(opening);
+                          setFocusSide("white");
+                        }}
+                      >
+                        {opening}
+                      </Button>
+                    ))
+                  : defenses.map((defense) => (
+                      <Button
+                        key={defense}
+                        onClick={() => {
+                          setSelectedOpening(defense);
+                          setFocusSide("black");
+                        }}
+                      >
+                        {defense}
+                      </Button>
+                    ))}
               </SimpleGrid>
             </AccordionItemContent>
           </AccordionItem>

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
-import { Heading, SimpleGrid } from "@chakra-ui/react";
+import { Heading, Icon, SimpleGrid } from "@chakra-ui/react";
+import { FaChessKing } from "react-icons/fa";
 
 interface ChessGameProps {
   selectedOpening: string;
+  focusSide: "white" | "black";
 }
 
-const ChessGame: React.FC<ChessGameProps> = ({ selectedOpening }) => {
+const ChessGame: React.FC<ChessGameProps> = ({
+  selectedOpening,
+  focusSide,
+}) => {
   // Initialize the chess game
   const [game, setGame] = useState(new Chess());
 
@@ -30,7 +35,14 @@ const ChessGame: React.FC<ChessGameProps> = ({ selectedOpening }) => {
 
   return (
     <SimpleGrid columns={1} padding={10}>
-      <Heading>{selectedOpening}</Heading>
+      <Heading>
+        <Icon
+          as={FaChessKing}
+          paddingRight={5}
+          color={focusSide === "white" ? "white" : "black"}
+        />
+        {selectedOpening}
+      </Heading>
       <Chessboard position={game.fen()} onPieceDrop={onDrop} boardWidth={500} />
     </SimpleGrid>
   );
