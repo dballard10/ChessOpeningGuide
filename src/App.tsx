@@ -4,40 +4,31 @@ import Chessboard from "./components/Chessboard";
 import NavBar from "./components/NavBar";
 
 function App() {
-  const isLargeScreen = useBreakpointValue({
-    base: false,
-    sm: false,
-    md: false,
-    lg: true,
-    xl: true,
+  const templateAreas = useBreakpointValue({
+    base: `"nav" " main"`,
+    lg: `"nav nav" "aside main"`,
+  });
+
+  const templateColumns = useBreakpointValue({
+    base: "1fr",
+    lg: "200px 1fr",
   });
 
   return (
     <Grid
-      templateAreas={[
-        `"nav" "main"`, // base
-        `"nav" "main"`, // sm
-        `"nav" "main"`, // md
-        `"nav nav" "main main"`, // lg
-        `"nav nav" "main main"`, // xl
-      ]}
-      templateColumns={[
-        "1fr", // base
-        "1fr", // sm
-        "1fr", // md
-        "200px 1fr", // lg
-        "200px 1fr", // xl
-      ]}
+      templateAreas={templateAreas}
+      templateColumns={templateColumns}
+      gap={4}
     >
-      <GridItem area="nav">
+      <GridItem area="nav" color="blue">
         <NavBar />
       </GridItem>
-      <Show when={isLargeScreen}>
-        <GridItem area="aside">
+      <Show when="lg">
+        <GridItem area="aside" color="green">
           <OpeningSelector />
         </GridItem>
       </Show>
-      <GridItem area="main">
+      <GridItem area="main" color="red">
         <Chessboard />
       </GridItem>
     </Grid>
