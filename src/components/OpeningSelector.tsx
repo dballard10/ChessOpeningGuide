@@ -57,24 +57,24 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({
                 {item.value === 1
                   ? openings.map((opening) => (
                       <Button
-                        key={opening}
+                        key={opening.name}
                         onClick={() => {
-                          setSelectedOpening(opening);
+                          setSelectedOpening(opening.name);
                           setFocusSide("white");
                         }}
                       >
-                        {opening}
+                        {opening.name}
                       </Button>
                     ))
                   : defenses.map((defense) => (
                       <Button
-                        key={defense}
+                        key={defense.name}
                         onClick={() => {
-                          setSelectedOpening(defense);
+                          setSelectedOpening(defense.name);
                           setFocusSide("black");
                         }}
                       >
-                        {defense}
+                        {defense.name}
                       </Button>
                     ))}
               </SimpleGrid>
