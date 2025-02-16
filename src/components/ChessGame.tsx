@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
-import { Button, Heading, HStack, Icon, SimpleGrid } from "@chakra-ui/react";
+import {
+  Button,
+  Heading,
+  HStack,
+  Icon,
+  SimpleGrid,
+  Box,
+} from "@chakra-ui/react";
 import { FaChessKing, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { GiMagnifyingGlass } from "react-icons/gi";
 import { RiResetLeftFill } from "react-icons/ri";
+import { HiSwitchVertical } from "react-icons/hi";
 
 interface ChessGameProps {
   selectedOpening: string;
@@ -36,8 +44,14 @@ const ChessGame: React.FC<ChessGameProps> = ({
   };
 
   return (
-    <SimpleGrid columns={1} paddingRight={20} paddingLeft={20}>
-      <HStack justifyContent="space-between">
+    <SimpleGrid
+      columns={1}
+      padding={10}
+      paddingLeft={30}
+      paddingRight={20}
+      alignItems="center"
+    >
+      <HStack justifyContent="space-between" width="500px">
         <Heading>
           <Icon
             as={FaChessKing}
@@ -46,22 +60,33 @@ const ChessGame: React.FC<ChessGameProps> = ({
           />
           {selectedOpening}
         </Heading>
-        <Button>
-          <Icon as={GiMagnifyingGlass} />
-        </Button>
+        <HStack>
+          <Button>
+            <Icon as={HiSwitchVertical} />
+          </Button>
+          <Button>
+            <Icon as={GiMagnifyingGlass} />
+          </Button>
+        </HStack>
       </HStack>
-      <Chessboard position={game.fen()} onPieceDrop={onDrop} boardWidth={500} />
-      <HStack justifyContent="center" padding={10}>
-        <Button>
-          <Icon as={FaChevronLeft} />
-        </Button>
-        <Button>
-          <Icon as={RiResetLeftFill} />
-        </Button>
-        <Button>
-          <Icon as={FaChevronRight} />
-        </Button>
-      </HStack>
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <Chessboard
+          position={game.fen()}
+          onPieceDrop={onDrop}
+          boardWidth={500}
+        />
+        <HStack justifyContent="center" paddingTop={10} width="100%">
+          <Button>
+            <Icon as={FaChevronLeft} />
+          </Button>
+          <Button>
+            <Icon as={RiResetLeftFill} />
+          </Button>
+          <Button>
+            <Icon as={FaChevronRight} />
+          </Button>
+        </HStack>
+      </Box>
     </SimpleGrid>
   );
 };
