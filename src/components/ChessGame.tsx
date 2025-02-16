@@ -12,16 +12,18 @@ import {
 import { FaChessKing, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { GiMagnifyingGlass } from "react-icons/gi";
 import { RiResetLeftFill } from "react-icons/ri";
-import { HiSwitchVertical } from "react-icons/hi";
+import FlipSides from "./FlipSides";
 
 interface ChessGameProps {
   selectedOpening: string;
   focusSide: "white" | "black";
+  setFocusSide: (side: "white" | "black") => void;
 }
 
 const ChessGame: React.FC<ChessGameProps> = ({
   selectedOpening,
   focusSide,
+  setFocusSide,
 }) => {
   // Initialize the chess game
   const [game, setGame] = useState(new Chess());
@@ -61,9 +63,7 @@ const ChessGame: React.FC<ChessGameProps> = ({
           {selectedOpening}
         </Heading>
         <HStack>
-          <Button>
-            <Icon as={HiSwitchVertical} />
-          </Button>
+          <FlipSides focusSide={focusSide} setFocusSide={setFocusSide} />
           <Button>
             <Icon as={GiMagnifyingGlass} />
           </Button>
@@ -74,6 +74,7 @@ const ChessGame: React.FC<ChessGameProps> = ({
           position={game.fen()}
           onPieceDrop={onDrop}
           boardWidth={500}
+          boardOrientation={focusSide}
         />
         <HStack justifyContent="center" paddingTop={10} width="100%">
           <Button>

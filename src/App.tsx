@@ -37,7 +37,11 @@ function App() {
         />
       </GridItem>
       <GridItem area="main" boxShadow="0 0 5px rgba(0, 0, 0, 0.5)">
-        <ChessGame selectedOpening={selectedOpening} focusSide={focusSide} />
+        <ChessGame
+          selectedOpening={selectedOpening}
+          focusSide={focusSide}
+          setFocusSide={setFocusSide}
+        />
       </GridItem>
     </Grid>
   );
