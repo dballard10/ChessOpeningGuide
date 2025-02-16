@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
-import { Heading, Icon, SimpleGrid } from "@chakra-ui/react";
-import { FaChessKing } from "react-icons/fa";
+import { Button, Heading, HStack, Icon, SimpleGrid } from "@chakra-ui/react";
+import { FaChessKing, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { GiMagnifyingGlass } from "react-icons/gi";
+import { RiResetLeftFill } from "react-icons/ri";
 
 interface ChessGameProps {
   selectedOpening: string;
@@ -35,15 +37,31 @@ const ChessGame: React.FC<ChessGameProps> = ({
 
   return (
     <SimpleGrid columns={1} padding={10}>
-      <Heading>
-        <Icon
-          as={FaChessKing}
-          paddingRight={5}
-          color={focusSide === "white" ? "white" : "black"}
-        />
-        {selectedOpening}
-      </Heading>
+      <HStack justifyContent="space-between">
+        <Heading>
+          <Icon
+            as={FaChessKing}
+            paddingRight={5}
+            color={focusSide === "white" ? "white" : "black"}
+          />
+          {selectedOpening}
+        </Heading>
+        <Button>
+          <Icon as={GiMagnifyingGlass} />
+        </Button>
+      </HStack>
       <Chessboard position={game.fen()} onPieceDrop={onDrop} boardWidth={500} />
+      <HStack justifyContent="center" padding={10}>
+        <Button>
+          <Icon as={FaChevronLeft} />
+        </Button>
+        <Button>
+          <Icon as={RiResetLeftFill} />
+        </Button>
+        <Button>
+          <Icon as={FaChevronRight} />
+        </Button>
+      </HStack>
     </SimpleGrid>
   );
 };

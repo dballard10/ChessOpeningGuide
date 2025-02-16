@@ -9,12 +9,12 @@ function App() {
   const [focusSide, setFocusSide] = useState<"white" | "black">("white");
 
   const templateAreas = useBreakpointValue({
-    base: `"nav" " main"`,
+    base: `"nav nav" "aside main"`,
     lg: `"nav nav" "aside main"`,
   });
 
   const templateColumns = useBreakpointValue({
-    base: "1fr",
+    base: "300px 1fr",
     lg: "300px 1fr",
   });
 

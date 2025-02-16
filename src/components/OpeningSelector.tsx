@@ -7,7 +7,7 @@ import {
 import { Button, Icon, SimpleGrid, Stack } from "@chakra-ui/react";
 import { openings, defenses } from "../data/openings";
 import { FaChessKnight, FaChessRook } from "react-icons/fa";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 
 interface OpeningSelectorProps {
   setSelectedOpening: (opening: string) => void;
@@ -18,6 +18,9 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({
   setSelectedOpening,
   setFocusSide,
 }) => {
+  useEffect(() => {
+    setSelectedOpening("Chess Board"); // Set the initial value when the component mounts
+  }, [setSelectedOpening]);
   const items = [
     {
       value: 1,
@@ -33,12 +36,13 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({
 
   return (
     <Stack width="full" paddingLeft={10}>
-      <AccordionRoot>
+      <AccordionRoot justifyContent="center" collapsible>
         {items.map((item) => (
           <AccordionItem
             padding={10}
             key={item.value}
             value={item.value.toString()}
+            justifyContent="center"
           >
             <AccordionItemTrigger>
               <Icon>{item.icon}</Icon>
