@@ -4,11 +4,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme.ts";
 import "./index.css";
 import App from "./App.tsx";
-
+import { ColorModeProvider } from "./components/ui/color-mode";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ChakraProvider value={theme}>
-      <App />
+      <ColorModeProvider>
+        <App />
+      </ColorModeProvider>
     </ChakraProvider>
   </StrictMode>
 );

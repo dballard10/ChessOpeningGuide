@@ -1,6 +1,6 @@
 import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 import OpeningSelector from "./components/OpeningSelector";
-import ChessGame from "./components/ChessGame";
+import ChessFunctions from "./components/ChessGame";
 import NavBar from "./components/NavBar";
 import { useState } from "react";
 
@@ -37,7 +37,7 @@ function App() {
         />
       </GridItem>
       <GridItem area="main" boxShadow="0 0 5px rgba(0, 0, 0, 0.5)">
-        <ChessGame
+        <ChessFunctions
           selectedOpening={selectedOpening}
           focusSide={focusSide}
           setFocusSide={setFocusSide}
