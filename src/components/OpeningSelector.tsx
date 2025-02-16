@@ -8,19 +8,27 @@ import { Button, Icon, SimpleGrid, Stack } from "@chakra-ui/react";
 import { openings, defenses } from "../data/openings";
 import { FaChessKnight, FaChessRook } from "react-icons/fa";
 import { FC, useEffect } from "react";
+import { Chess } from "chess.js";
 
 interface OpeningSelectorProps {
   setSelectedOpening: (opening: string) => void;
   setFocusSide: (side: "white" | "black") => void;
+  setMoveList: (moves: string[]) => void;
+  setCurrentMove: (move: number) => void;
+  setGame: (game: Chess) => void;
 }
 
 const OpeningSelector: FC<OpeningSelectorProps> = ({
   setSelectedOpening,
   setFocusSide,
+  setMoveList,
+  setCurrentMove,
+  setGame,
 }) => {
   useEffect(() => {
     setSelectedOpening("Chess Board"); // Set the initial value when the component mounts
   }, [setSelectedOpening]);
+
   const items = [
     {
       value: 1,
@@ -33,6 +41,17 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({
       icon: <Icon as={FaChessRook} />,
     },
   ];
+
+  const handleSelectOpening = (
+    opening: { name: string; moves: string[] },
+    side: "white" | "black"
+  ) => {
+    setSelectedOpening(opening.name);
+    setMoveList(opening.moves);
+    setFocusSide(side);
+    setCurrentMove(0);
+    setGame(new Chess());
+  };
 
   return (
     <Stack width="full">
@@ -58,10 +77,7 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({
                   ? openings.map((opening) => (
                       <Button
                         key={opening.name}
-                        onClick={() => {
-                          setSelectedOpening(opening.name);
-                          setFocusSide("white");
-                        }}
+                        onClick={() => handleSelectOpening(opening, "white")}
                       >
                         {opening.name}
                       </Button>
@@ -69,10 +85,7 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({
                   : defenses.map((defense) => (
                       <Button
                         key={defense.name}
-                        onClick={() => {
-                          setSelectedOpening(defense.name);
-                          setFocusSide("black");
-                        }}
+                        onClick={() => handleSelectOpening(defense, "black")}
                       >
                         {defense.name}
                       </Button>
