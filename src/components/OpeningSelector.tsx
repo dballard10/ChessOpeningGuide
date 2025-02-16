@@ -35,20 +35,24 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({
   ];
 
   return (
-    <Stack width="full" paddingLeft={10}>
-      <AccordionRoot justifyContent="center" collapsible>
+    <Stack width="full">
+      <AccordionRoot collapsible>
         {items.map((item) => (
           <AccordionItem
             padding={10}
             key={item.value}
             value={item.value.toString()}
-            justifyContent="center"
           >
-            <AccordionItemTrigger>
+            <AccordionItemTrigger
+              width="100%"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
               <Icon>{item.icon}</Icon>
               {" " + item.title}
             </AccordionItemTrigger>
-            <AccordionItemContent paddingLeft={10}>
+            <AccordionItemContent>
               <SimpleGrid columns={1} gap={7} padding={10}>
                 {item.value === 1
                   ? openings.map((opening) => (

@@ -22,18 +22,21 @@ function App() {
     <Grid
       templateAreas={templateAreas}
       templateColumns={templateColumns}
-      gap={4}
+      width="100vw"
+      position="absolute"
+      top="0"
+      left="0"
     >
-      <GridItem area="nav">
+      <GridItem area="nav" boxShadow="0 0 5px rgba(0, 0, 0, 0.5)">
         <NavBar />
       </GridItem>
-      <GridItem area="aside">
+      <GridItem area="aside" boxShadow="0 0 5px rgba(0, 0, 0, 0.5)">
         <OpeningSelector
           setSelectedOpening={setSelectedOpening}
           setFocusSide={setFocusSide}
         />
       </GridItem>
-      <GridItem area="main">
+      <GridItem area="main" boxShadow="0 0 5px rgba(0, 0, 0, 0.5)">
         <ChessGame selectedOpening={selectedOpening} focusSide={focusSide} />
       </GridItem>
     </Grid>
