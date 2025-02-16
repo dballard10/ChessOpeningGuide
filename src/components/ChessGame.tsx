@@ -36,7 +36,7 @@ const ChessGame: React.FC<ChessGameProps> = ({
   };
 
   return (
-    <SimpleGrid columns={1} padding={10}>
+    <SimpleGrid columns={1} paddingRight={20}>
       <HStack justifyContent="space-between">
         <Heading>
           <Icon
