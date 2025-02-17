@@ -55,7 +55,7 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({
 
   return (
     <Stack width="full">
-      <AccordionRoot collapsible>
+      <AccordionRoot>
         {items.map((item) => (
           <AccordionItem
             padding={10}
