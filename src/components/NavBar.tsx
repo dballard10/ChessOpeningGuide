@@ -16,10 +16,7 @@ const NavBar = () => {
           height="60px"
           style={{ borderRadius: "10px" }}
         />
-        <h1
-          className="text-xl font-bold"
-          style={{ fontFamily: "Pacifico, cursive" }}
-        >
+        <h1 className="text-xl font-bold" style={{ fontFamily: "serif" }}>
           Chess Opening Guide
         </h1>
       </HStack>

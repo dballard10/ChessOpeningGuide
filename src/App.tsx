@@ -52,7 +52,11 @@ function App() {
       top="0"
       left="0"
     >
-      <GridItem area="nav" boxShadow="0 0 5px rgba(0, 0, 0, 0.5)">
+      <GridItem
+        area="nav"
+        backgroundColor={"#3f3f46"}
+        boxShadow="0 0 5px rgba(0, 0, 0, 0.5)"
+      >
         <NavBar />
       </GridItem>
       <GridItem area="aside" boxShadow="0 0 5px rgba(0, 0, 0, 0.5)">
