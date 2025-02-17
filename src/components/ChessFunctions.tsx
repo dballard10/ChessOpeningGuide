@@ -47,14 +47,14 @@ const ChessFunctions: FC<ChessFunctionsProps> = ({
         </Heading>
         <HStack>
           <FlipSides focusSide={focusSide} setFocusSide={setFocusSide} />
-          <Button>
+          <Button disabled={true}>
             <Icon as={GiMagnifyingGlass} />
           </Button>
         </HStack>
       </HStack>
       <ChessGame focusSide={focusSide} game={game} />
       <HStack justifyContent="center" paddingTop={10} width="500px">
-        <Button disabled={currentMove <= 0}>
+        <Button disabled={true}>
           <Icon as={FaChevronLeft} />
         </Button>
         <Button onClick={handleReset}>

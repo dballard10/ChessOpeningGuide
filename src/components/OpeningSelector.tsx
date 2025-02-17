@@ -26,7 +26,7 @@ const OpeningSelector: FC<OpeningSelectorProps> = ({
   setGame,
 }) => {
   useEffect(() => {
-    setSelectedOpening("Chess Board"); // Set the initial value when the component mounts
+    setSelectedOpening("Select an Opening"); // Set the initial value when the component mounts
   }, [setSelectedOpening]);
 
   const items = [

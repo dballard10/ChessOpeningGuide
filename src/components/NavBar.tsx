@@ -1,6 +1,6 @@
 import { HStack } from "@chakra-ui/react";
 import logo from "../assets/chesslogo.webp";
-import ColorModeSwitch from "./ColorModeSwitch";
+// import ColorModeSwitch from "./ColorModeSwitch";
 
 const NavBar = () => {
   return (
@@ -20,7 +20,7 @@ const NavBar = () => {
           Chess Opening Guide
         </h1>
       </HStack>
-      <ColorModeSwitch />
+      {/* <ColorModeSwitch /> */}
     </HStack>
   );
 };
