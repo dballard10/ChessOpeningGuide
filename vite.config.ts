@@ -21,7 +21,18 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          reactVendor: ["react", "react-dom"],
+          reactVendor: ["react", "react-dom", "react-router-dom"],
+          radixUI: [
+            "@radix-ui/react-accordion",
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-popover",
+            "@radix-ui/react-scroll-area",
+            "@radix-ui/react-select",
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-tooltip",
+          ],
+          chessVendor: ["chess.js", "react-chessboard"],
         },
       },
     },
