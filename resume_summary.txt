@@ -1,0 +1,18 @@
+Built an interactive chess opening guide using React 18, TypeScript, and Vite. Designed a responsive UI with Tailwind CSS and shadcn/ui components, integrated Chess.js for game logic with react-chessboard for interactive gameplay, implemented global state management with Zustand, and deployed with optimized routing (React Router) and modern build tools to Vercel.
+
+Key Technologies Used:
+- Frontend: React 18, TypeScript, Vite
+- Styling: Tailwind CSS, shadcn/ui (Radix UI primitives)
+- Chess Engine: Chess.js, react-chessboard
+- State Management: Zustand
+- Data Fetching: TanStack Query
+- Routing: React Router
+- Deployment: Vercel
+
+Features:
+- Interactive chessboard with drag-and-drop functionality
+- Step-by-step opening move sequences
+- Board customization and themes
+- Mobile-responsive design
+- Opening search and categorization
+- Practice variations and custom moves 
